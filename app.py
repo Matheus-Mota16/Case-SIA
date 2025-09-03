@@ -1,6 +1,5 @@
 # =================================================================
 # 1. BLOCO DE IMPORTAÇÕES
-# Todas as bibliotecas necessárias para o projeto
 # =================================================================
 import streamlit as st
 import pandas as pd
@@ -15,7 +14,6 @@ import os
 
 # =================================================================
 # 2. BLOCO DE VARIÁVEIS E FUNÇÕES DE PROCESSAMENTO E COLETA
-# Contém as listas de palavras e todas as funções lógicas do projeto
 # =================================================================
 
 # --- Variáveis: Listas de palavras-chave para a análise de sentimento ---
@@ -100,7 +98,6 @@ def salvar_dados_em_arquivos(df):
 
 # =================================================================
 # 3. BLOCO DA APLICAÇÃO STREAMLIT (DASHBOARD)
-# Contém a função que cria a interface visual
 # =================================================================
 def main():
     st.title("Monitoramento de IA no Piauí ✨")
@@ -163,7 +160,6 @@ def main():
     
 # =================================================================
 # 4. BLOCO DE EXECUÇÃO PRINCIPAL
-# Este bloco executa o código quando o script é rodado diretamente
 # =================================================================
 if __name__ == "__main__":
     main()
