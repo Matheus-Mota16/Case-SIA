@@ -1,39 +1,44 @@
-# Painel de Monitoramento de Inteligência Artificial no Piauí
+# Monitoramento de IA no Piauí
 
-## Visão Geral do Projeto
+Este projeto é um painel de monitoramento de notícias em tempo real sobre Inteligência Artificial, com um foco especial na cobertura midiática no estado do Piauí. A aplicação coleta artigos de notícias do Google News, realiza uma análise de sentimento simples e apresenta os resultados de forma visual e interativa.
 
-Este projeto consiste em um painel simplificado para monitorar menções sobre "Inteligência Artificial no Piauí" em fontes de notícias públicas. O painel coleta notícias via RSS, realiza uma análise de sentimento baseada em regras e visualiza os dados em um dashboard interativo usando **Streamlit**.
+### 🌟 Funcionalidades Principais
 
-O principal objetivo é demonstrar um fluxo de trabalho completo, desde a coleta de dados até a visualização final, focando em habilidades como web scraping, processamento de texto, análise de dados e criação de dashboards.
+* **Coleta de Dados:** Busca e extrai as notícias mais recentes do Google News com base nas palavras-chave "Inteligencia Artificial Piauí" e "SIA Piauí".
+* **Análise de Sentimento:** Classifica cada artigo como "Positivo", "Negativo" ou "Neutro" usando uma abordagem baseada em regras simples.
+* **Visualização Interativa:** Exibe um painel completo com:
+    * **Gráfico de Pizza:** Mostra a distribuição dos sentimentos.
+    * **Nuvem de Palavras:** Exibe as palavras-chave mais comuns nas notícias.
+    * **Tabela Interativa:** Permite explorar os dados brutos de cada notícia.
+* **Identidade Visual Regional:** A interface usa a paleta de cores da bandeira do Piauí para uma estética única e regionalizada.
 
-## Funcionalidades
+### 🛠️ Tecnologias Utilizadas
 
-* **Coleta de Dados:** Coleta os 10-15 artigos mais recentes do Google Notícias usando palavras-chave como "Inteligência Artificial Piauí" ou "SIA Piauí".
-* **Análise de Sentimento:** Classifica cada notícia como `Positivo`, `Negativo` ou `Neutro` com base em um dicionário de palavras-chave.
-* **Visualização Interativa:** Apresenta os resultados em um dashboard que inclui:
-    * Um gráfico de pizza mostrando a distribuição dos sentimentos.
-    * Uma nuvem de palavras com os termos mais frequentes.
-    * Uma tabela interativa com os dados brutos (título, link e sentimento).
+* **Python:** Linguagem de programação central.
+* **Streamlit:** Framework para construir a interface do painel de forma rápida e intuitiva.
+* **Pandas:** Usado para manipulação e análise eficiente dos dados.
+* **Plotly Express:** Biblioteca para a criação de gráficos interativos.
+* **WordCloud:** Para gerar a nuvem de palavras.
+* **Requests & BeautifulSoup:** Essenciais para a coleta e o processamento dos dados do Google News.
 
-## Pré-requisitos
+### 🚀 Como Executar o Projeto
 
-Certifique-se de ter o **Python 3.x** instalado.
+1.  **Instale os Pré-requisitos:** Primeiro, certifique-se de que o Python 3.7 ou superior está instalado em seu sistema.
+2.  **Instale as Dependências:** Abra seu terminal, navegue até a pasta do projeto e instale todas as bibliotecas necessárias usando o `requirements.txt`:
 
-## Instalação
-
-1.  Clone este repositório para o seu ambiente local:
-    ```bash
-    git clone SEU_LINK_DO_REPOSITORIO
-    cd nome-do-seu-repositorio
-    ```
-2.  Instale as bibliotecas necessárias listadas no arquivo `requirements.txt`:
     ```bash
     pip install -r requirements.txt
     ```
 
-## Como Executar o Projeto
+3.  **Inicie a Aplicação:** Após a instalação, execute o comando abaixo para iniciar o painel interativo. Ele será aberto automaticamente em seu navegador.
 
-Após a instalação, basta executar o script principal com o Streamlit:
+    ```bash
+    streamlit run app.py
+    ```
 
-```bash
-streamlit run app.py
+### 📁 Estrutura do Projeto
+
+* `app.py`: Contém todo o código da aplicação, desde a coleta de dados até a interface do usuário.
+* `requirements.txt`: Lista todas as bibliotecas Python que o projeto precisa para rodar.
+* `README.md`: Este arquivo, que serve como guia e documentação do projeto.
+* `DECISIONS.md`: Explica as principais escolhas de design e arquitetura do projeto.

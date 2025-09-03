@@ -1,30 +1,26 @@
-### DECISIONS.md
+# Decisões de Projeto
 
-Este arquivo justifica as escolhas de design e implementação, mostrando o raciocínio por trás das decisões técnicas.
+Este documento detalha as principais decisões tomadas durante o desenvolvimento do projeto "Monitoramento de IA no Piauí". Cada escolha foi feita para otimizar a clareza, a simplicidade e a eficiência do projeto.
 
-```markdown
-# Documentação de Decisões do Projeto
+### Decisão 1: Unificação do Código em um Único Arquivo (`app.py`)
 
-Este documento explica as principais decisões de design e implementação tomadas durante a construção do painel de monitoramento.
+* **Razão:** Em projetos de pequeno porte como este, a unificação do código em um único arquivo simplifica a estrutura e o fluxo de trabalho. Isso elimina a necessidade de gerenciar múltiplos arquivos e resolver erros de importação. A abordagem "tudo em um" torna o código mais fácil de ser compartilhado, lido e executado por outras pessoas.
 
-## 1. Abordagem de Análise de Sentimento: Baseada em Regras
+### Decisão 2: Uso de Análise de Sentimento Baseada em Regras
 
-**Decisão:** Optou-se por uma abordagem de análise de sentimento baseada em regras simples em vez de treinar um modelo de Machine Learning (ML).
+* **Razão:** Em vez de usar modelos complexos de aprendizado de máquina, optamos por uma análise de sentimento baseada em listas de palavras-chave. Esta escolha tem uma série de vantagens: é **transparente** (a lógica é clara para qualquer um que leia o código), **rápida** (não exige processamento pesado) e **direta** (o resultado é facilmente compreendido). Embora seja menos sofisticada do que modelos de IA, ela atende perfeitamente ao objetivo de um monitoramento rápido e demonstra a funcionalidade principal de forma clara.
 
-**Justificativa:** Para os propósitos deste projeto, que é uma demonstração de fluxo de trabalho completo em uma escala pequena, a simplicidade e a rapidez da abordagem baseada em regras são ideais. Um modelo de ML exigiria:
-* **Coleta e Rotulagem de Dados:** Seria necessário coletar e rotular manualmente centenas ou milhares de notícias para criar um conjunto de dados de treinamento.
-* **Complexidade Adicional:** Aumentaria a complexidade do código e a quantidade de bibliotecas necessárias (por exemplo, `scikit-learn`, `nltk`).
-* **Requisitos de Processamento:** O modelo treinado precisaria ser armazenado e carregado, o que adicionaria tempo de execução.
+### Decisão 3: Escolha do Streamlit para a Interface do Usuário
 
-A abordagem de regras, embora menos sofisticada, cumpre o objetivo de classificar o sentimento de forma satisfatória para a escala do projeto, permitindo que o foco permaneça no fluxo de trabalho geral.
+* **Razão:** O Streamlit foi a ferramenta ideal, pois permite criar painéis interativos usando apenas Python. Isso eliminou a necessidade de desenvolver uma interface web complexa com HTML, CSS e JavaScript, acelerando drasticamente o processo de desenvolvimento. A sintaxe simples e a capacidade de atualizar a página em tempo real ao salvar o código tornam a experiência de desenvolvimento extremamente eficiente.
 
-## 2. Tratamento de Erros e Disponibilidade de Dados
+### Decisão 4: Implementação da Paleta de Cores do Piauí
 
-**Decisão:** Implementar um tratamento de erros básico para a requisição de dados e garantir que o dashboard lide graciosamente com a falta de notícias.
+* **Razão:** A integração das cores da bandeira do Piauí (`#ffcd00`, `#006a25`, `#002d72`) teve dois objetivos: **estético** e **simbólico**. Esteticamente, a paleta única personaliza a aplicação. Simbolicamente, ela conecta o projeto diretamente ao seu foco regional, o que é um diferencial importante para o público-alvo.
 
-**Justificativa:** O Google Notícias pode ocasionalmente não retornar resultados para as palavras-chave ou a requisição pode falhar por outros motivos (ex: problemas de rede). É crucial que o aplicativo não "quebre" nessas situações.
+### Decisão 5: Melhorias na Estética e Usabilidade
 
-* **Tratamento de Requisições:** A função de coleta de dados utiliza um bloco `try-except` com `response.raise_for_status()`. Em caso de erro, uma lista vazia é retornada, permitindo que o restante do script continue a ser executado sem falha.
-* **Robustez do Dashboard:** A lógica no `app.py` foi projetada para lidar com DataFrames vazios. Se não houver notícias, a tabela e os gráficos exibirão zero resultados ou mensagens de aviso apropriadas, como "Não há texto suficiente para gerar a nuvem de palavras.", em vez de gerar erros de execução.
-
-Essa decisão garante que a aplicação seja mais robusta e ofereça uma experiência de usuário mais estável, mesmo em condições de dados não ideais.
+* **Razão:** Para melhorar a experiência do usuário, foram adicionados elementos de design como:
+    * **Barra Lateral (`st.sidebar`):** Usada para mover avisos de limitação e créditos para uma área separada, mantendo o conteúdo principal organizado.
+    * **Colunas (`st.columns`):** Foram utilizadas para dispor elementos lado a lado (como o gráfico de pizza e a nuvem de palavras), otimizando o espaço e tornando o layout mais dinâmico.
+    * **Expansores (`st.expander`):** Permitem que a tabela de dados brutos seja "escondida" por padrão, o que evita que o painel pareça muito longo e permite ao usuário ver os dados detalhados apenas quando desejar.

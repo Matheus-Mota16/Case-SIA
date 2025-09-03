@@ -1,7 +1,8 @@
-requests
-pandas
-beautifulsoup4
 streamlit
-wordcloud
-matplotlib
+pandas
 plotly
+wordcloud
+requests
+beautifulsoup4
+lxml
+matplotlib
